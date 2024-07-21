@@ -1,0 +1,10 @@
+:root {
+    --background-header: rgb(90, 73, 202);
+    --card: rgb(132, 121, 205);
+    --info-font: rgb(148, 143, 177);
+    --background: rgb(191, 202, 240);
+}
+
+body {
+    background-color: var(--background);
+}

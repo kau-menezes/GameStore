@@ -1,0 +1,9 @@
+p {
+    display: flex;
+    justify-content: center
+    ;
+    background-color: var(--background-header);
+    color: aliceblue;
+    font-weight: 300;
+    padding: 20px;
+}

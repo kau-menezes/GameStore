@@ -1,0 +1,96 @@
+ul#games {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-top: 100px;
+}
+
+li.game-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+
+    background-color: var(--card);
+    padding: 25px;
+    
+    width: 95%;
+    max-width: 800px;
+
+    margin: 20px 0px;
+    border-radius: 24px;
+}
+
+li.game-card > div.game-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+}
+
+li.game-card > div.game-info > div.btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li.game-card > div.game-info > div.btns > label > span {
+    color: aliceblue;
+}
+
+li.game-card > div.game-info > div.btns > button {
+    margin-top: 8px;
+}
+
+li.game-card > div.game-info > div.btns > button{
+    color: aliceblue;
+    margin-left: 20px;
+}
+
+li.game-card > div.game-info > h1, h3{
+    color: aliceblue;
+    margin-left: 20px;
+}
+
+li.game-card > div.game-info > h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    display: flex;
+}
+
+li.game-card > div.game-info > h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    word-wrap: break-word;      /* IE 5.5-7 */
+    white-space: pre-wrap;
+}
+
+li.game-card > div.game-info > h3.game-price {
+    background-color: aliceblue;
+    color: var(--background-header);
+    border-radius: 8px;
+
+}
+
+li.game-card > img {
+    width: 100%;
+    max-width: 330px;
+    border-radius: 16px;
+}
+
+li.game-card > div {
+    max-width: 400px;
+}
+
+input:checked + label > span {
+    font-variation-settings: 'FILL' 1;
+    color: rgb(187, 59, 59) !important;
+}
+
+.like {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

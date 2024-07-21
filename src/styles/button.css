@@ -1,0 +1,19 @@
+button {
+    border: medium none;
+    border-radius: 16px;
+
+    color: aliceblue;
+    background-color: var(--background-header);
+
+    padding: 5px 10px;
+
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+span {
+    cursor: pointer;
+
+}
