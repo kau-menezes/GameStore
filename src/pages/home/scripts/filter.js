@@ -1,19 +1,24 @@
-const renderFilterTags = (data) => {
+export const renderFilterTags = (data) => {
     
-    const tags = []
+    let tags = [];
     data.forEach( element => {
-        element.tags.forEach( tag => {
-            if (tags.includes(tag)) {
+        element.tag.forEach( tag => {
+
+            if (!tags.includes(tag)) {
                 tags.push(tag)
             }
         } )
     })
 
-    tags.forEach( tag => {
-        
-    });
+    tags.forEach( tag => renderTag(tag) )
 }
 
 const renderTag = ( tag ) => {
-    let input = document.getElementById("")
+    let filter = document.getElementById("filter")
+    filter.insertAdjacentHTML('beforeend', 
+        `
+        <input type="checkbox" id="gameTag">
+        <label for="gameTag">${tag}</label>
+        `
+    )
 }
