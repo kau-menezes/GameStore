@@ -3,13 +3,13 @@ export function gameRendering (data, list){
 
     list.innerHTML = ""
 
-    data.forEach((game, index) => {
-        list.insertAdjacentHTML("beforeend",generateCard(game))
+    data.forEach((game) => { 
+        list.insertAdjacentHTML("beforeend", generateCard(game))
     })
 }
 
 function generateCard(game) {
-    
+     
     return `
             <li class="game-card">
                 <img src="../../assets/img/${game.id}.png" alt="">
