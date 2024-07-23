@@ -17,7 +17,7 @@ const renderTag = ( tag ) => {
     let filter = document.getElementById("filter")
     filter.insertAdjacentHTML('beforeend', 
         `
-        <input type="checkbox"  id="gameTag">
+        <input type="checkbox" id="gameTag">
         <label for="gameTag">${tag}</label>
         `
     )
