@@ -3,12 +3,12 @@ export function gameRendering (data, list){
 
     list.innerHTML = ""
 
-    data.forEach((game) => { 
+    data.forEach( (game) => { 
         list.insertAdjacentHTML("beforeend", generateCard(game))
     })
 }
 
-function generateCard(game) {
+export function generateCard(game) {
      
     return `
             <li class="game-card">

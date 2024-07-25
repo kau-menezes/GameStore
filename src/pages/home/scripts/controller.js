@@ -5,12 +5,16 @@ import { renderFilteredTags } from "./filter.js"
 
 import data from "../../../data/games.json" with { type: "json" }
 
-const list = document.querySelector("#games")
+export const list = document.querySelector("#games")
 
 gameRendering(data, list)
 
 renderFilterTags(data)
 
-const filter = document.getElementById("filter")
+const filter = document.querySelectorAll('input[type=checkbox]')
 
-filter.addEventListener('change', renderFilteredTags(list))
+// console.log(filter)
+
+Array.from(filter).forEach( (element) => element.addEventListener('input', renderFilteredTags))
+
+// filter.addEventListener('change', renderFilteredTags())
