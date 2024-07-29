@@ -11,10 +11,6 @@ gameRendering(data, list)
 
 renderFilterTags(data)
 
-const filter = document.querySelectorAll('input[type=checkbox]')
-
-// console.log(filter)
+const filter = document.querySelectorAll('.filterTag')
 
 Array.from(filter).forEach( (element) => element.addEventListener('input', renderFilteredTags))
-
-// filter.addEventListener('change', renderFilteredTags())

@@ -14,15 +14,25 @@ export const renderFilterTags = (data) => {
             }
         } )
     })
+    let filter = document.getElementById("filter")
+
+    filter.insertAdjacentHTML("beforeend", `
+        <div class='filterTags'>
+    `   
+    )
 
     tags.forEach( tag => renderTag(tag) )
+
+    filter.insertAdjacentHTML("beforeend", `
+        <\div>
+    `)
 }
 
 const renderTag = ( tag ) => {
     let filter = document.getElementById("filter")
     filter.insertAdjacentHTML('beforeend', 
         `
-        <input type="checkbox" id="${tag}" class="checkbox-filter">
+        <input type="checkbox" id="${tag}" class="filterTag"">
         <label for="gameTag">${tag}</label>
         `
     )
@@ -30,8 +40,12 @@ const renderTag = ( tag ) => {
 
 export function renderFilteredTags() {
     
-    let filter = Array.from(document.querySelectorAll('input[type=checkbox]'))
+    let filter = Array.from(document.querySelectorAll('input[type=checkbox][class=filterTag]'))
+    console.log(filter)
     let checked = []
+
+    // an object with only unique
+    let insertedTags = new Set()
 
     filter.forEach( element => {
         if (element.checked) {
@@ -39,20 +53,26 @@ export function renderFilteredTags() {
         }
     })
 
+    let price = document.getElementById("gamePrice").value
+    console.log(price)
+
+    let search = document.getElementById("gameSearch").value
+
     console.log(checked)
 
     list.innerHTML = ""
 
     data.forEach( (element) => {
-        // console.log(checked.includes(element.tag))
 
         element.tag.forEach( (tag) => {
-            if (checked.includes(tag)) {
+            if (checked.includes(tag) && !insertedTags.has(element.id) && element.price < price && element.name.includes(search)) {
                 list.insertAdjacentHTML('beforeend', generateCard(element))
+                insertedTags.add(element.id)
                 return;
             }
         })
-
+        
+        return;
         
     })
 
