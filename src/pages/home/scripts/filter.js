@@ -1,5 +1,6 @@
+import { gameRendering, generateCard } from "./gameRendering.js";
+
 import data from "../../../data/games.json" with { type: "json" }
-import { generateCard } from "./gameRendering.js";
 const list = document.querySelector("#games")
 
 
@@ -14,26 +15,22 @@ export const renderFilterTags = (data) => {
             }
         } )
     })
+
     let filter = document.getElementById("filter")
 
-    filter.insertAdjacentHTML("beforeend", `
-        <div class='filterTags'>
-    `   
-    )
+    filter.insertAdjacentHTML("beforeend", "<div class='tagsFilter'><\div>");
 
-    tags.forEach( tag => renderTag(tag) )
+    tags.forEach(tag => renderTag(tag));
 
-    filter.insertAdjacentHTML("beforeend", `
-        <\div>
-    `)
+    // filter.insertAdjacentHTML("beforeend", "</div>");
 }
 
 const renderTag = ( tag ) => {
-    let filter = document.getElementById("filter")
-    filter.insertAdjacentHTML('beforeend', 
+    let container = document.querySelector(".tagsFilter")
+    container.insertAdjacentHTML('beforeend', 
         `
         <input type="checkbox" id="${tag}" class="filterTag"">
-        <label for="gameTag">${tag}</label>
+        <label for="${tag}">${tag}</label>
         `
     )
 }
@@ -44,7 +41,13 @@ export function renderFilteredTags() {
     console.log(filter)
     let checked = []
 
+    // if (checked.length == 0) {
+    //     gameRendering(data, list)
+    //     console.log("oi")
+    // }
+
     // an object with only unique
+
     let insertedTags = new Set()
 
     filter.forEach( element => {
@@ -54,11 +57,8 @@ export function renderFilteredTags() {
     })
 
     let price = document.getElementById("gamePrice").value
-    console.log(price)
 
     let search = document.getElementById("gameSearch").value
-
-    console.log(checked)
 
     list.innerHTML = ""
 

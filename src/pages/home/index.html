@@ -16,6 +16,8 @@
     <link rel="icon" href="../../assets/img/icons/games.png">
 
     <link rel="stylesheet" href="./styles/card.css">
+    <link rel="stylesheet" href="./styles/filter.css">
+
 
     <script src="./scripts/controller.js" type="module" defer></script>
 
@@ -33,9 +35,11 @@
     </header>
     <main>
         <div id="filter">
-            <input type="text" id="gameSearch" class="filterTag">
-            <input type="range" id="gamePrice" class="filterTag" min="20" max="300">
-            <label for="gamePrice"></label>
+            <div id="inputFilter">
+                <input type="text" id="gameSearch" class="filterTag">
+                <input type="range" id="gamePrice" class="filterTag" min="20" max="200">
+                <label for="gamePrice"></label>
+            </div>
         </div>
         <ul id="games"></ul>
     </main>
