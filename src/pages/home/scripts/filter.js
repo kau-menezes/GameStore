@@ -1,9 +1,9 @@
-import { gameRendering, generateCard } from "./gameRendering.js";
+import {generateCard } from "./gameRendering.js";
 
-import data from "../../../data/games.json" with { type: "json" }
+// selects the div where the game cards are rendered
 const list = document.querySelector("#games")
 
-
+// selects all tags existent and renders them in the #filter div
 export const renderFilterTags = (data) => {
     
     let tags = [];
@@ -18,13 +18,13 @@ export const renderFilterTags = (data) => {
 
     let filter = document.getElementById("filter")
 
-    filter.insertAdjacentHTML("beforeend", "<div class='tagsFilter'><\div>");
+    filter.insertAdjacentHTML("beforeend", "<div class='tagsFilter'></div>");
 
     tags.forEach(tag => renderTag(tag));
 
-    // filter.insertAdjacentHTML("beforeend", "</div>");
 }
 
+// returns the HTML necessary to render the filter
 const renderTag = ( tag ) => {
     let container = document.querySelector(".tagsFilter")
     container.insertAdjacentHTML('beforeend', 
@@ -35,45 +35,27 @@ const renderTag = ( tag ) => {
     )
 }
 
-export function renderFilteredTags() {
+export function renderFilteredCards(data) {
     
-    let filter = Array.from(document.querySelectorAll('input[type=checkbox][class=filterTag]'))
-    console.log(filter)
-    let checked = []
+    // selects all inputs and checkboxes from the user input
+    let checkedTags = Array.from(document.querySelectorAll('input[type=checkbox][class=filterTag]:checked')).map( (element) => element.id)
 
-    // if (checked.length == 0) {
-    //     gameRendering(data, list)
-    //     console.log("oi")
-    // }
+    let price = Number(document.getElementById("gamePrice").value)
 
-    // an object with only unique
+    let search = document.getElementById("gameSearch").value.toLowerCase().trim()
 
-    let insertedTags = new Set()
+    // creates a subarray only with gamecards that fit the conditions especified in the filter method 
+    let filteredCards = data.filter( (card) => {
 
-    filter.forEach( element => {
-        if (element.checked) {
-            checked.push(element.id)
-        }
+        let cardCheck = checkedTags.length === 0 || card.tag.some(tag => checkedTags.includes(tag))
+
+        return card.price <= price && card.name.toLowerCase().includes(search) && cardCheck
     })
 
-    let price = document.getElementById("gamePrice").value
-
-    let search = document.getElementById("gameSearch").value
-
+    // clears the games section
     list.innerHTML = ""
 
-    data.forEach( (element) => {
-
-        element.tag.forEach( (tag) => {
-            if (checked.includes(tag) && !insertedTags.has(element.id) && element.price < price && element.name.includes(search)) {
-                list.insertAdjacentHTML('beforeend', generateCard(element))
-                insertedTags.add(element.id)
-                return;
-            }
-        })
-        
-        return;
-        
-    })
+    // render the cards using the generateCard function imported from the gameRendering.js file
+    filteredCards.forEach ( (card) => list.insertAdjacentHTML('beforeend', generateCard(card)))
 
 }

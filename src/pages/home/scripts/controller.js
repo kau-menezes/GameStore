@@ -1,7 +1,6 @@
 import { gameRendering } from "./gameRendering.js"
 import { renderFilterTags } from "./filter.js"
-import { renderFilteredTags } from "./filter.js"
-
+import { renderFilteredCards } from "./filter.js"
 
 import data from "../../../data/games.json" with { type: "json" }
 
@@ -13,4 +12,4 @@ renderFilterTags(data)
 
 const filter = document.querySelectorAll('.filterTag')
 
-Array.from(filter).forEach( (element) => element.addEventListener('input', renderFilteredTags))
+Array.from(filter).forEach( (element) => element.addEventListener('input', () => { renderFilteredCards(data) }))
