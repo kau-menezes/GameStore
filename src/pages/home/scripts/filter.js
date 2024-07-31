@@ -30,7 +30,7 @@ const renderTag = ( tag ) => {
     container.insertAdjacentHTML('beforeend', 
         `
         <input type="checkbox" id="${tag}" class="filterTag"">
-        <label for="${tag}">${tag}</label>
+        <label for="${tag}" class="filter-label">${tag}</label>
         `
     )
 }
