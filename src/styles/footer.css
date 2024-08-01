@@ -10,7 +10,7 @@ footer {
     background-color: var(--background-header);
     height: 10vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -24,4 +24,19 @@ footer p {
     font-weight: 300;
     padding: 20px;
     
+}
+
+.footer-icons {
+    max-width: 25px;
+}
+
+footer ul {
+    margin-bottom: 20px;
+}
+
+a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
 }
