@@ -7,4 +7,14 @@
 
 body {
     background-color: var(--background);
+    /* height: 100%; */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main {
+    min-height: 80vh;
+
 }
