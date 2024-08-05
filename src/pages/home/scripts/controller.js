@@ -10,6 +10,6 @@ gameRendering(data, list)
 
 renderFilterTags(data)
 
-const filter = document.querySelectorAll('.filterTag')
+const filter = document.querySelectorAll('.filter-input,.filterTag')
 
 Array.from(filter).forEach( (element) => element.addEventListener('input', () => { renderFilteredCards(data) }))
